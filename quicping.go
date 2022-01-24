@@ -60,7 +60,8 @@ func buildHeader(destConnID, srcConnID ConnectionID, payloadLen int) []byte {
 func buildPacket() ([]byte, ConnectionID, ConnectionID) {
 	destConnID, srcConnID := generateConnectionIDs()
 	// generate random payload
-	randomPayload := make([]byte, 1162)
+	minPayloadSize := 1200 - 14 - (len(destConnID) + len(srcConnID))
+	randomPayload := make([]byte, minPayloadSize)
 	random.Seed(time.Now().UnixNano())
 	random.Read(randomPayload)
 
