@@ -8,8 +8,10 @@ The QUIC PING packet satifies the minimum Initial datagram size (as specified in
 
 ### Usage
 ```
+go mod init quicping
+go get golang.org/x/crypto/hkdf
 go build .
-./QUIC-PING google.com:443 [--hexdump]
+./quicping google.com:443 [--hexdump]
 
 ```
 The option ```--hexdump``` saves the generated QUIC packet as hexdump to ```packet.txt```.
